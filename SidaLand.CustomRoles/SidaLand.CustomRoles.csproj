@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{42553268-0018-4CB3-9BEE-CE39BC0A624E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CustomRolesCS</RootNamespace>
+    <AssemblyName>CustomRolesCS</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>12.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\SidaLandCore\DLLS\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\SidaLandCore\DLLS\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-Publicized">
+      <HintPath>..\..\SidaLandCore\DLLS\Assembly-CSharp-Publicized.dll</HintPath>
+    </Reference>
+    <Reference Include="CommandSystem.Core">
+      <HintPath>..\..\SidaLandCore\DLLS\CommandSystem.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Exiled.API">
+      <HintPath>..\..\SidaLandCore\DLLS\Exiled.API.dll</HintPath>
+    </Reference>
+    <Reference Include="Exiled.CreditTags">
+      <HintPath>..\..\SidaLandCore\DLLS\Exiled.CreditTags.dll</HintPath>
+    </Reference>
+    <Reference Include="Exiled.CustomItems">
+      <HintPath>..\..\SidaLandCore\DLLS\Exiled.CustomItems.dll</HintPath>
+    </Reference>
+    <Reference Include="Exiled.Events">
+      <HintPath>..\..\SidaLandCore\DLLS\Exiled.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="Exiled.Loader">
+      <HintPath>..\..\..\..\AppData\Roaming\SCP Secret Laboratory\PluginAPI\plugins\global\Exiled.Loader.dll</HintPath>
+    </Reference>
+    <Reference Include="Exiled.Permissions">
+      <HintPath>..\..\SidaLandCore\DLLS\Exiled.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="Mirror">
+      <HintPath>..\..\SidaLandCore\DLLS\Mirror.dll</HintPath>
+    </Reference>
+    <Reference Include="PluginAPI">
+      <HintPath>..\..\SidaLandCore\DLLS\PluginAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Pooling">
+      <HintPath>..\..\SidaLandCore\DLLS\Pooling.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\SidaLandCore\DLLS\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\SidaLandCore\DLLS\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\SidaLandCore\DLLS\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="YamlDotNet">
+      <HintPath>..\..\SidaLandCore\DLLS\YamlDotNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\Extensions.cs" />
+    <Compile Include="API\Features\ActiveAbilityCS.cs" />
+    <Compile Include="API\Features\CustomAbilityCS.cs" />
+    <Compile Include="API\Features\CustomRoleCS.cs" />
+    <Compile Include="API\Features\Spawn\DynamicSpawnPointCS.cs" />
+    <Compile Include="API\Features\Enums\CheckTypeCS.cs" />
+    <Compile Include="API\Features\Enums\KeyPressTriggerTypeCS.cs" />
+    <Compile Include="API\Features\Enums\SpawnLocationTypeCS.cs" />
+    <Compile Include="API\Features\Extensions\ParserExtensionCS.cs" />
+    <Compile Include="API\Features\Interfaces\ITypeDiscriminatorCS.cs" />
+    <Compile Include="API\Features\Parsers\ParsingEventBufferCS.cs" />
+    <Compile Include="API\Features\KeypressActivatorCS.cs" />
+    <Compile Include="API\Features\Parsers\AbstractClassNodeTypeResolverCS.cs" />
+    <Compile Include="API\Features\Parsers\AggregateExceptionTypeResolveCS.cs" />
+    <Compile Include="API\Features\PassiveAbilityCS.cs" />
+    <Compile Include="API\Features\Spawn\SpawnExtensionsCS.cs" />
+    <Compile Include="API\Features\Spawn\SpawnPropertiesCS.cs" />
+    <Compile Include="Commands\Give.cs" />
+    <Compile Include="Commands\Info.cs" />
+    <Compile Include="Commands\List\Abilities.cs" />
+    <Compile Include="Commands\List\List.cs" />
+    <Compile Include="Commands\List\Registered.cs" />
+    <Compile Include="Commands\Parent.cs" />
+    <Compile Include="Commands\UseAbility.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="CustomRolesCS.cs" />
+    <Compile Include="Events\PlayerHandlers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
