@@ -304,6 +304,11 @@
             Log.Debug($"{Name}: Adding role to {player.Nickname}.");
             TrackedPlayers.Add(player);
 
+            if (TryGet(player, out IReadOnlyCollection<CustomRoleCS> customRoles) && customRoles.Count > 0)
+            {
+                return;
+            }
+
             if (Role != RoleTypeId.None)
             {
                 switch (KeepPositionOnSpawn)
@@ -663,8 +668,13 @@
 
         private void OnInternalSpawned(SpawnedEventArgs ev)
         {
-            if (!IgnoreSpawnSystem && SpawnChance > 0 && !Check(ev.Player) && ev.Player.Role.Type == Role && Loader.Random.NextDouble() * 100 <= SpawnChance)
+            if (Check(ev.Player)) // Si el jugador ya tiene un rol, no hacer nada
+                return;
+
+            if (!IgnoreSpawnSystem && SpawnChance > 0 && ev.Player.Role.Type == Role && Loader.Random.NextDouble() * 100 <= SpawnChance)
+            {
                 AddRole(ev.Player);
+            }
         }
 
         private void OnInternalChangingRole(ChangingRoleEventArgs ev)
@@ -672,8 +682,9 @@
             if (ev.Reason == SpawnReason.Destroyed)
                 return;
 
-            if (Check(ev.Player) && ((ev.NewRole == RoleTypeId.Spectator && !KeepRoleOnDeath) || (ev.NewRole != RoleTypeId.Spectator && ev.NewRole != Role && !KeepRoleOnChangingRole)))
+            if (Check(ev.Player) && ((ev.NewRole == RoleTypeId.Spectator && !KeepRoleOnDeath) || (ev.NewRole != Role && ev.NewRole != RoleTypeId.Spectator && !KeepRoleOnChangingRole)))
             {
+                Log.Info($"[DEBUG] {ev.Player.Nickname} cambió de rol. Eliminando rol anterior.");
                 RemoveRole(ev.Player);
             }
         }
